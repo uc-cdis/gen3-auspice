@@ -81,7 +81,7 @@
     "dom-to-image": "^2.6.0",
     "dompurify": "^2.0.7",
     "express": "^4.16.3",
-    "express-naked-redirect": "^0.1.2",
+    "express-naked-redirect": "^0.1.7",
     "express-static-gzip": "^0.2.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^4.3.0",
