@@ -2,19 +2,23 @@ language: node_js
 sudo: false
 dist: bionic
 node_js:
-- '10'
-- '12'
+  - '10'
+  - '12'
+before_install:
+  # Exactly match our Dockerfile or npm will error for package-lock.json mismatch
+  - npm i -g npm@6.10.3
 install:
-- npm install
-- pip install --user awscli
+  - npm -v
+  - npm install
+  - pip install --user awscli
 script:
-- npm run build
+  - npm run build
 after_success:
-- if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "release" ]]; then
-    npm run rebuild-docker-image;
-    npm config set //registry.npmjs.org/:_authToken="$NPM_TOKEN";
-    npm publish;
-  fi
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "release" ]]; then
+      npm run rebuild-docker-image;
+      npm config set //registry.npmjs.org/:_authToken="$NPM_TOKEN";
+      npm publish;
+    fi
 notifications:
   email:
     on_success: never
