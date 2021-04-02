@@ -92,12 +92,12 @@ const run = (args) => {
     utils.log("---------------------------------------------------\n\n");
   }).on('error', (error) => {
     if (error.code === 'EADDRINUSE') {
-      utils.error(esapi.encoder.encodeForJavaScript(`Port ${app.get('port')} is currently in use by another program.
+      utils.error(esapi.encodeForJavaScript(`Port ${app.get('port')} is currently in use by another program.
       You must either close that program or specify a different port by setting the shell variable "$PORT". Note that on MacOS / Linux ${chalk.yellow(`lsof -n -i :${app.get('port')} | grep LISTEN`)} should identify the process currently using the port.`));
     }
 
     if (error.code === 'ENOTFOUND') {
-      utils.error(esapi.encoder.encodeForJavaScript(`Host ${app.get('host')} is not a valid address. The server could not be started. If you did not provide a HOST environment variable when starting the app you may have HOST already set in your system. You can either change that variable, or override HOST when starting the app.
+      utils.error(esapi.encodeForJavaScript(`Host ${app.get('host')} is not a valid address. The server could not be started. If you did not provide a HOST environment variable when starting the app you may have HOST already set in your system. You can either change that variable, or override HOST when starting the app.
 
       Example commands to fix:
         ${chalk.yellow('HOST="localhost" auspice develop')}

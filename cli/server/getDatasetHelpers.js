@@ -111,7 +111,7 @@ const sendJson = async (res, info) => {
       readStream.pipe(res);
     });
     readStream.on('error', (err) => {
-      utils.warn(esapi.encoder.encodeForJavaScript(`Failed to read ${info.address}`));
+      utils.warn(esapi.encodeForJavaScript(`Failed to read ${info.address}`));
       utils.verbose(err);
       res.sendStatus(404);
     });
